@@ -7,7 +7,7 @@ export const stats = [
 
 export const equipment = [
   {
-    name: "Backhoe Loader",
+    name: "Backhoe Loader 1",
     description: "Ideal for JCB excavation, DI pipeline work, HDPE pipeline work, trenching and earthwork.",
     capacity: "Backhoe loader operations",
     operator: "Operator available",
@@ -25,7 +25,7 @@ export const equipment = [
     // },
   },
   {
-    name: "Backhoe Loader",
+    name: "Backhoe Loader 2",
     description: "Suited for road excavation, water pipeline work, earth filling, site levelling and utility trenching.",
     capacity: "Backhoe loader operations",
     operator: "Operator available",
