@@ -13,13 +13,47 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RATHORE CONSTRUCTION & EARTHMOVERS",
-  description: "Building the Future with Strength, Quality & Heavy Equipment Solutions. Premium construction and heavy equipment services for infrastructure, mining and industrial projects.",
-  keywords: ["heavy equipment rental", "earthmoving", "excavator rental", "construction equipment", "industrial rental"],
+  metadataBase: new URL("https://rathore-construction-earthmovers.vercel.app"),
+  title: {
+    default: "Rathore Construction & Earthmovers | Heavy Equipment Rental",
+    template: "%s | Rathore Construction & Earthmovers",
+  },
+  description:
+    "Rathore Construction & Earthmovers offers heavy equipment rental, excavation, earthmoving, pipeline work and infrastructure support in Madhya Pradesh and nearby states.",
+  keywords: [
+    "construction company",
+    "heavy equipment rental",
+    "earthmoving company",
+    "excavator rental",
+    "JCB rental",
+    "backhoe loader rental",
+    "pipeline laying",
+    "road construction equipment",
+    "Madhya Pradesh construction",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  verification: {
+    google: "fyAsl2B4CtIgTqsxVSlQ7yIkJDwRTYaup_ayczFx_uA",
+  },
   openGraph: {
-    title: "RATHORE CONSTRUCTION & EARTHMOVERS",
-    description: "Building the Future with Strength, Quality & Heavy Equipment Solutions. Premium construction and heavy equipment services for infrastructure, mining and industrial projects.",
+    title: "Rathore Construction & Earthmovers | Heavy Equipment Rental",
+    description:
+      "Reliable heavy equipment rental and earthmoving services for infrastructure, mining and industrial projects.",
     type: "website",
+    url: "https://rathore-construction-earthmovers.vercel.app",
+    siteName: "Rathore Construction & Earthmovers",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rathore Construction & Earthmovers | Heavy Equipment Rental",
+    description:
+      "Reliable heavy equipment rental and earthmoving services for infrastructure, mining and industrial projects.",
   },
 };
 
@@ -33,6 +67,12 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <meta
+          name="google-site-verification"
+          content="fyAsl2B4CtIgTqsxVSlQ7yIkJDwRTYaup_ayczFx_uA"
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-slate-950 text-white">{children}</body>
     </html>
   );
