@@ -4,36 +4,58 @@ import { useState, type FormEvent } from "react";
 
 export function BookingForm() {
   const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const payload = Object.fromEntries(formData.entries());
+    const form = event.currentTarget;
+    const requiredFields = Array.from(
+      form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>("[required]"),
+    );
 
-    setIsSubmitting(true);
-    try {
-      const response = await fetch("/api/booking", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+    requiredFields.forEach((field) => {
+      field.setCustomValidity(field.value.trim() ? "" : "Please complete this required field.");
+    });
 
-      if (!response.ok) {
-        throw new Error("Booking request failed");
-      }
+    if (!form.reportValidity()) return;
 
-      setSubmitted(true);
-      event.currentTarget.reset();
-    } catch {
-      setSubmitted(false);
-    } finally {
-      setIsSubmitting(false);
+    const formData = new FormData(form);
+    const value = (name: string) => String(formData.get(name) ?? "").trim();
+    const message = [
+      "🚜 *New Equipment Booking Request*",
+      "",
+      `👤 *Customer Name:* ${value("customerName")}`,
+      `📞 *Phone:* ${value("phone")}`,
+      `📧 *Email:* ${value("email")}`,
+      `📍 *Project Location:* ${value("location")}`,
+      `🚜 *Equipment Required:* ${value("equipment")}`,
+      `📅 *Rental Duration:* ${value("duration")}`,
+      "",
+      "📝 *Project Details:*",
+      value("details"),
+    ].join("\n");
+    const whatsappUrl = `https://wa.me/919752264618?text=${encodeURIComponent(message)}`;
+
+    const whatsappWindow = window.open(whatsappUrl, "_blank");
+    if (whatsappWindow) {
+      whatsappWindow.opener = null;
+    } else {
+      window.location.assign(whatsappUrl);
     }
+    setSubmitted(true);
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 rounded-[1.75rem] border border-slate-200 bg-white/80 p-6 shadow-sm backdrop-blur dark:border-slate-800 dark:bg-slate-900/80">
+    <form
+      onSubmit={handleSubmit}
+      onChange={(event) => {
+        setSubmitted(false);
+        const field = event.target;
+        if (field instanceof HTMLInputElement || field instanceof HTMLSelectElement || field instanceof HTMLTextAreaElement) {
+          field.setCustomValidity("");
+        }
+      }}
+      className="space-y-4 rounded-[1.75rem] border border-slate-200 bg-white/80 p-6 shadow-sm backdrop-blur dark:border-slate-800 dark:bg-slate-900/80"
+    >
       <div className="grid gap-4 md:grid-cols-2">
         <label className="block text-sm font-medium text-slate-700 dark:text-slate-200">
           Customer Name
@@ -81,10 +103,10 @@ export function BookingForm() {
         Project Details
         <textarea required name="details" rows={5} placeholder="Share your site requirements, timeline and scope of work." className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
       </label>
-      <button type="submit" disabled={isSubmitting} className="rounded-full bg-orange-500 px-6 py-3 font-semibold text-white transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-orange-400">
-        {isSubmitting ? "Sending request..." : "Submit Booking Request"}
+      <button type="submit" className="rounded-full bg-orange-500 px-6 py-3 font-semibold text-white transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-orange-400">
+        Submit Booking Request
       </button>
-      {submitted ? <p className="text-sm text-emerald-600">Booking request received. Our team will contact you shortly.</p> : null}
+      {submitted ? <p className="text-sm text-emerald-600">WhatsApp opened with your booking details. Press Send in WhatsApp to submit your request.</p> : null}
     </form>
   );
 }
