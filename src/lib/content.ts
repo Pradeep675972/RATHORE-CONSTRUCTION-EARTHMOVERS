@@ -1,74 +1,80 @@
 export const stats = [
-  { value: "10+", label: "Years Experience" },
+  { value: "10+", label: "Years of Field Experience" },
   { value: "300+", label: "Projects Completed" },
-  { value: "100+", label: "Happy Clients" },
-  { value: "24/7", label: "Service" },
+  { value: "100+", label: "Equipment Deployments" },
+  { value: "24/7", label: "Rapid Support" },
 ];
 
 export const equipment = [
   {
-    name: "Backhoe Loader 1",
-    description: "Ideal for JCB excavation, DI pipeline work, HDPE pipeline work, trenching and earthwork.",
-    capacity: "Backhoe loader operations",
-    operator: "Operator available",
-    maintenance: "Well maintained",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1nklRRlmyAXQxART1UPMONZPnzgxM7ojcETrt5jc1zQ&s=10",
-    // attachment: {
-      // title: "Hydraulic Breaker Attachment Available",
-      // applications: [
-        // "Rock Breaking",
-        // "Concrete Demolition",
-        // "Road Breaking",
-        // "Hard Surface Excavation",
-        // "Foundation Breaking",
-      // ],
-    // },
+    name: "JCB 3DX Backhoe Loader",
+    category: "BACKHOE LOADER • AVAILABLE ON RENT",
+    description:
+      "Versatile JCB 3DX backhoe loader for excavation, trenching, loading, earthmoving and general construction work.",
+    image: "/equipment/jcb-3dx-loaders.png",
+    imagePosition: "center",
+    applications: [
+      "Excavation and earthmoving",
+      "Trenching for pipelines and utilities",
+      "Loading and material handling",
+      "Site preparation and roadwork",
+      "Foundation and construction support",
+    ],
+    details: [
+      { label: "Machine", value: "JCB 3DX Backhoe Loader" },
+      { label: "Front Attachment", value: "Loader Bucket" },
+      { label: "Rear Attachment", value: "Excavator Bucket" },
+      { label: "Application", value: "Excavation, trenching, loading & earthmoving" },
+      { label: "Availability", value: "Available for rental" },
+    ],
+    cta: "Rent This Equipment",
   },
   {
-    name: "Backhoe Loader 2",
-    description: "Suited for road excavation, water pipeline work, earth filling, site levelling and utility trenching.",
-    capacity: "Backhoe loader operations",
-    operator: "Operator available",
-    maintenance: "Well maintained",
-    image: "/equipment/cat-backhoe-unit-2.jpg",
-    // attachment: {
-    //   title: "Hydraulic Breaker Attachment Available",
-    //   applications: [
-    //     "Rock Breaking",
-    //     "Concrete Demolition",
-    //     "Road Breaking",
-    //     "Hard Surface Excavation",
-    //     "Foundation Breaking",
-    //   ],
-    // },
+    name: "HDPE Pipe Fusion Machine",
+    category: "PIPE JOINTING • HDPE PIPELINE WORK",
+    description:
+      "Professional HDPE pipe fusion equipment used for reliable and strong pipe jointing during pipeline installation projects.",
+    image: "/equipment/hdpe-pipe-fusion.png",
+    imagePosition: "center",
+    applications: [
+      "HDPE pipe butt fusion",
+      "Pipeline joint preparation",
+      "Water pipeline installation",
+      "Utility and infrastructure pipelines",
+      "Large-diameter HDPE pipe joining",
+    ],
+    details: [
+      { label: "Machine", value: "HDPE Pipe Fusion Machine" },
+      { label: "Application", value: "HDPE pipe jointing" },
+      { label: "Work Type", value: "Butt fusion / pipe fusion" },
+      { label: "Use", value: "Pipeline installation and infrastructure projects" },
+      { label: "Operation", value: "Trained operator required" },
+    ],
+    cta: "Enquire Now",
   },
   {
-    name: "Hydraulic Excavator (Poclain)",
-    description: "Built for deep excavation, large earthwork, pipeline excavation, site development and government infrastructure projects.",
-    capacity: "Hydraulic excavator operations",
-    operator: "Operator available",
-    maintenance: "Well maintained",
-    image: "/equipment/p2.jpg",
-  },
-
-    {
-    name: "Hydraulic Excavator Breaker",
-    description: "Built for deep excavation, large earthwork, pipeline excavation, site development and government infrastructure projects.",
-    capacity: "Hydraulic excavator operations",
-    operator: "Operator available",
-    maintenance: "Well maintained",
-    // image: "/equipment/p2.jpg",
-    video: "/equipment/v2.mp4",
-       attachment: {
-      title: "Hydraulic Breaker Attachment Available",
-      applications: [
-        "Rock Breaking",
-        "Concrete Demolition",
-        "Road Breaking",
-        "Hard Surface Excavation",
-        "Foundation Breaking",
-      ],
-    },
+    name: "JCB 3DX Hydraulic Breaker",
+    category: "HYDRAULIC BREAKER • HEAVY DEMOLITION WORK",
+    description:
+      "JCB 3DX equipped with a hydraulic breaker attachment for rock breaking, concrete demolition, hard-surface excavation and heavy-duty site work.",
+    image: "/equipment/jcb-3dx-hydraulic-breaker.png",
+    imagePosition: "68% center",
+    applications: [
+      "Rock breaking",
+      "Concrete breaking",
+      "Demolition work",
+      "Road cutting and hard-surface removal",
+      "Foundation and excavation work",
+      "Breaking hard ground and construction debris",
+    ],
+    details: [
+      { label: "Machine", value: "JCB 3DX" },
+      { label: "Attachment", value: "Hydraulic Breaker" },
+      { label: "Application", value: "Rock breaking, demolition & hard-surface excavation" },
+      { label: "Operator", value: "Skilled operator" },
+      { label: "Availability", value: "Available for rental" },
+    ],
+    cta: "Rent This Equipment",
   },
 ];
 
@@ -96,29 +102,31 @@ export const services = [
 ];
 
 export const reasons = [
-  "Experienced Operators",
-  "Modern Machinery",
-  "Well Maintained Equipment",
-  "Affordable Pricing",
-  "Fast Delivery",
-  "24/7 Support",
-  "Safety Standards",
-  "Trusted Service",
-  "Government Project Experience",
+  "Experienced operators",
+  "Modern machinery",
+  "Well maintained equipment",
+  "Affordable pricing",
+  "Fast delivery",
+  "24/7 support",
+  "Safety standards",
+  "Trusted service",
+  "Government project experience",
 ];
 
 export const projects = [
-  {title: "HDPI Pipeline Laying", category: "Underground Pipeline", image: "https://cpimg.tistatic.com/11458866/b/4/HDPE-Pipe-Jointing-Machine-SNI-H-500..jpg" },
-  {    title: "Water Supply Pipeline Project", category: "Government Project", image: "https://i.ytimg.com/vi/mpususvlbdE/maxresdefault.jpg" },
-  { title: "Rock Breaking", category: "Hydraulic Breaker", image: "https://i.ytimg.com/vi/HrBosYxl78E/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLD49469tEOdqRwFqCN5oKTP72oVUA" },
-  { title: "JCB Trenching Work", category: "Utility Excavation", image: "https://compactequip.com/wp-content/uploads/2024/11/3CX-Oil-Lift-Final-copy-700x525.jpg" },
+  { title: "HDPE Pipeline Laying", category: "Underground Pipeline", image: "/01-HDPE-Pipeline-Laying.png" },
+  { title: "Water Supply Pipeline Project", category: "Government Project", image: "/02-Water-Supply-Pipeline.png" },
+  { title: "Rock Breaking", category: "Hydraulic Breaker", image: "/03-Rock-Breaking.png" },
+  { title: "JCB Trenching Work", category: "Utility Excavation", image: "/04-Earth-Excavation-Trenching.png" },
 ];
 
 export const galleryImages = [
-  "https://d1upyrvkztmmot.cloudfront.net/2025/02/image-10.webp",
-  "https://d9z1tpn605xsl.cloudfront.net/news_site_uploads/news_article/cover_image/260/open-uri20250805-2-tmty4r",
-  "https://www.scot-jcb.com/media/nydl1sgr/3cx-sitemaster-banner-image.jpg",
-  "https://www.jcb.com/globalassets/digizuite/66556-0q4a3796-1-900x600/Img_800x800",
+  "/gallery/01-hdpe-pipeline-installation.png",
+  "/gallery/02-earth-excavation-pipeline.png",
+  "/gallery/03-hydraulic-breaker-rock-breaking.png",
+  "/gallery/04-jcb-earth-excavation-dumping.png",
+  "/gallery/05-construction-equipment-pipeline-site.png",
+  "/gallery/06-site-survey-construction-work.png",
 ];
 
 export const testimonials = [

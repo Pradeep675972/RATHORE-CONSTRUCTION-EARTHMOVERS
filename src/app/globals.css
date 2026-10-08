@@ -1,15 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  --background: #070707;
+  --foreground: #f5f3ef;
+  --panel: #101010;
+  --panel-soft: rgba(255, 255, 255, 0.02);
+  --line: rgba(255, 255, 255, 0.09);
+  --gold: #d9b679;
+  --gold-soft: rgba(217, 182, 121, 0.18);
+  --muted: #a4a4a4;
+  --shadow: rgba(0, 0, 0, 0.38);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Inter", "Segoe UI", Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, monospace;
 }
 
 html {
@@ -20,14 +27,263 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 100%);
+  z-index: 0;
 }
 
 * {
   box-sizing: border-box;
 }
 
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
 ::selection {
-  background: #fbbf24;
-  color: #0f172a;
+  background: rgba(217, 182, 121, 0.7);
+  color: #111111;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.site-shell {
+  position: relative;
+  z-index: 1;
+}
+
+.edgy-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+}
+
+.hero-grid {
+  transform-style: preserve-3d;
+}
+
+.hero-section {
+  min-height: 720px;
+}
+
+.hero-image-layer {
+  background-color: #090806;
+}
+
+.hero-image-layer::before {
+  content: "";
+  position: absolute;
+  inset: -1%;
+  background-image: url("/jcb-3dx-background.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 68% center;
+  transform-origin: 68% 50%;
+  animation: hero-background-drift 22s ease-in-out infinite;
+}
+
+.hero-image-layer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.76) 27%, rgba(0, 0, 0, 0.4) 52%, rgba(0, 0, 0, 0.1) 77%, rgba(0, 0, 0, 0.03) 100%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, transparent 30%, transparent 72%, rgba(0, 0, 0, 0.12) 100%);
+}
+
+@keyframes hero-background-drift {
+  0%,
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: scale(1.02) translate3d(-0.35%, 0.15%, 0);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    min-height: min(780px, calc(100svh - 84px));
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .hero-image-layer::before {
+    background-position: 68% center;
+  }
+}
+
+@media (max-width: 639px) {
+  .hero-section {
+    min-height: 0;
+  }
+
+  .hero-image-layer::before {
+    inset: auto -1% -1%;
+    height: 45%;
+    background-size: auto 100%;
+    background-position: right bottom;
+  }
+
+  .hero-image-layer::after {
+    background:
+      linear-gradient(90deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.16) 38%, rgba(0, 0, 0, 0.04) 100%),
+      linear-gradient(0deg, rgba(0, 0, 0, 0.14) 0%, transparent 55%);
+  }
+}
+
+.hero-mini-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(217, 182, 121, 0.9), rgba(255, 255, 255, 0.12));
+}
+
+.marquee-mask {
+  position: relative;
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 18s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.glass-button,
+.gold-button {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.glass-button::before,
+.gold-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.18) 50%, transparent 100%);
+  transform: translateX(-120%);
+  transition: transform 0.6s ease;
+}
+
+.glass-button:hover::before,
+.gold-button:hover::before {
+  transform: translateX(120%);
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(217, 182, 121, 0.8);
+  background: rgba(217, 182, 121, 0.08);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.custom-cursor.cursor-view {
+  width: 42px;
+  height: 42px;
+  background: rgba(217, 182, 121, 0.12);
+}
+
+.custom-cursor.cursor-explore {
+  width: 58px;
+  height: 58px;
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.custom-cursor.cursor-drag {
+  width: 34px;
+  height: 34px;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+@media (pointer: coarse) {
+  .custom-cursor {
+    display: none;
+  }
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(5, 5, 5, 0.4) 60%, rgba(5, 5, 5, 0.86) 100%);
+  opacity: 0.9;
+}
+
+
+.project-card:hover .project-visual {
+  transform: scale(1.08);
+}
+
+.service-card:hover .service-glow,
+.technology-pill:hover .technology-glow,
+.what-build-card:hover .what-build-glow {
+  opacity: 1;
+}
+
+.service-glow,
+.technology-glow,
+.what-build-glow {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.text-balance {
+  text-wrap: balance;
 }
